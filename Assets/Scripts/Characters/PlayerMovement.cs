@@ -8,10 +8,15 @@ public class PlayerMovement : MonoBehaviour
     [Range(0, 1000)]
     private float MoveSpeed = 10.0f;
 
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
 
     public Animator animator;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+    }
     void Start()
     {
         
@@ -20,11 +25,22 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        MoveCharacter();
+
+        
+    }
+    private void MoveCharacter()
+    {
         float xInput = Input.GetAxis("Horizontal");
         float yInput = Input.GetAxis("Vertical");
         Vector2 inputVec = new Vector2(xInput, yInput);
         Vector2 normalizedInput = inputVec.normalized;
-        rb.MovePosition(rb.position + new Vector2(normalizedInput.x * MoveSpeed, normalizedInput.y * MoveSpeed)  * Time.deltaTime);
-
+        rb.MovePosition(rb.position +
+                        new Vector2(normalizedInput.x * MoveSpeed, normalizedInput.y * MoveSpeed) * Time.deltaTime);
+        if (normalizedInput.x != 0 || normalizedInput.y != 0)
+        {
+        animator.SetFloat("X", xInput);
+        animator.SetFloat("Y", yInput);
+        }
     }
 }
