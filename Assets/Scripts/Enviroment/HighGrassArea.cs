@@ -1,18 +1,84 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HighGrassArea : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public float baseEncounterRate = 0.1f;
+    public float maxEncounterRate = 0.5f;
+    public int stepsBetweenRateIncrease = 50;
+    public float rateIncreaseAmount = 0.05f;
+
+    private Transform playerTransform;
+    public int stepsTaken = 0;
+    public float currentEncounterRate;
+    public bool isPlayerInsideGrass = false;
+
+    private bool isCheckingMovement = false;
+private Vector3 previousPosition;
+
+    private void Start()
     {
-        
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform; // Assuming "Player" is tagged.
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if (other.CompareTag("Player"))
+        {
+            isPlayerInsideGrass = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            isPlayerInsideGrass = false;
+        }
+    }
+
+    private void Update()
+    {
+        if (isPlayerInsideGrass)
+        {
+            if (!isCheckingMovement)
+            {
+                previousPosition = playerTransform.position;
+                StartCoroutine(DelayedMovementCheck());
+            }
+        }
+    }
+
+    IEnumerator DelayedMovementCheck()
+    {
+        isCheckingMovement = true;
+
+        // Wait for a delay (e.g., 1 second).
+        yield return new WaitForSeconds(0.5f);
+
+        if (Vector3.Distance(previousPosition, playerTransform.position) > 0)
+        {
+            stepsTaken++;
+
+            if (stepsTaken % stepsBetweenRateIncrease == 0 && currentEncounterRate < maxEncounterRate)
+            {
+                currentEncounterRate += rateIncreaseAmount;
+            }
+        }
+
+        if (Random.value < currentEncounterRate)
+        {
+            StartRandomEncounter();
+        }
+
+        isCheckingMovement = false;
+    }
+    private void StartRandomEncounter()
+    {
+        //int randomIndex = Random.Range(0, possibleEncounters.Length);
+        //GameObject encounterPrefab = possibleEncounters[randomIndex];
+        //Instantiate(encounterPrefab, other.transform.position, Quaternion.identity);
+        SceneManager.LoadScene("Encounter");
     }
 }
