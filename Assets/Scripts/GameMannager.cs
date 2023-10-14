@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameMannager : MonoBehaviour
 {
@@ -17,5 +18,10 @@ public class GameMannager : MonoBehaviour
         {
             Application.Quit();
         }
+    }
+
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene("SampleScene");
     }
 }
