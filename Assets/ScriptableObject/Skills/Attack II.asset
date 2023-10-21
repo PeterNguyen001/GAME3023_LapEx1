@@ -16,6 +16,6 @@ MonoBehaviour:
   skillType: 0
   target: 0
   skillDescription: 
-  healthEffect: -10
-  cost: 10
+  healthEffect: -15
+  cost: 20
   animation: {fileID: 0}

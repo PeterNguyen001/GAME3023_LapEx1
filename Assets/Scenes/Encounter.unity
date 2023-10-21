@@ -1468,6 +1468,7 @@ MonoBehaviour:
   characterData: {fileID: 11400000, guid: 700ffc150170d754dab100b2c1e84dba, type: 2}
   currentHealth: 0
   currentMana: 0
+  skillList: []
 --- !u!1 &1422604744
 GameObject:
   m_ObjectHideFlags: 0
@@ -1749,6 +1750,7 @@ GameObject:
   - component: {fileID: 1721765155}
   - component: {fileID: 1721765154}
   - component: {fileID: 1721765156}
+  - component: {fileID: 1721765157}
   m_Layer: 0
   m_Name: 1v1
   m_TagString: Untagged
@@ -1838,6 +1840,19 @@ MonoBehaviour:
   characterData: {fileID: 11400000, guid: f7b354d54d978c447aa16109fe99bb7f, type: 2}
   currentHealth: 0
   currentMana: 0
+  skillList: []
+--- !u!114 &1721765157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721765153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72abd0f64e71e6548b34e22d71e74bdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1776911527
 GameObject:
   m_ObjectHideFlags: 0
