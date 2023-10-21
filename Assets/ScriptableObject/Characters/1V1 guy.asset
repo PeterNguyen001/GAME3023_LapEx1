@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bf9a7c91fc68d244b43383e2a757ecf, type: 3}
+  m_Name: 1V1 guy
+  m_EditorClassIdentifier: 
+  characterName: 
+  maxHealth: 100
+  maxMana: 100
+  availableSkills:
+  - {fileID: 11400000, guid: ed9000c64676d28449b2c2ed2c52f77d, type: 2}
+  - {fileID: 11400000, guid: 98762a5b6f26d35498085d6d2300e6ea, type: 2}
+  - {fileID: 11400000, guid: 65363798e94212247b6e20d7e2e4135a, type: 2}

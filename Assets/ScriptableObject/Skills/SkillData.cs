@@ -4,7 +4,10 @@ using UnityEngine;
 public class SkillData : ScriptableObject
 {
     public string skillName;
-    public int damage;
+    public SkillType skillType;
+    public Target target;
+    public string skillDescription;
+    public int healthEffect;
     public int cost;
     public AnimationClip animation;
     // Add more attributes as needed.

@@ -10,9 +10,9 @@ public class HighGrassArea : MonoBehaviour
     public float rateIncreaseAmount = 0.05f;
 
     private Transform playerTransform;
-    public int stepsTaken = 0;
-    public float currentEncounterRate;
-    public bool isPlayerInsideGrass = false;
+    private int stepsTaken = 0;
+    private float currentEncounterRate;
+    private bool isPlayerInsideGrass = false;
 
     private bool isCheckingMovement = false;
 private Vector3 previousPosition;
