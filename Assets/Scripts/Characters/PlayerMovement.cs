@@ -16,10 +16,16 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+ 
     }
     void Start()
     {
-        
+        // Check if the game is being loaded
+        if (GameManager.Instance.IsLoadingGame)
+        {
+            LoadPlayerPosition();
+            GameManager.Instance.IsLoadingGame = false; // Reset the flag
+        }
     }
 
     // Update is called once per frame
@@ -48,5 +54,16 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("IsWalking", false);
         }
+    }
+    private void LoadPlayerPosition()
+    {
+        // Implement your logic to load the player position
+        float playerX = PlayerPrefs.GetFloat("PlayerX");
+        float playerY = PlayerPrefs.GetFloat("PlayerY");
+        float playerZ = PlayerPrefs.GetFloat("PlayerZ");
+
+        Vector3 playerPosition = new Vector3(playerX, playerY, playerZ);
+
+        transform.position = playerPosition;
     }
 }
